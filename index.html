@@ -10,7 +10,10 @@
 </head>
 <body>
 
-  <!-- ── LOADER ─────────────────────────────── -->
+  <!-- ── NOISE OVERLAY ─────────────────────── -->
+  <div id="noise-overlay"></div>
+
+  <!-- ── LOADER ────────────────────────────── -->
   <div id="loader">
     <canvas id="loader-canvas"></canvas>
     <div class="loader-bottom">
@@ -23,18 +26,6 @@
   <!-- ── CUSTOM CURSOR ──────────────────────── -->
   <div id="cur-dot"></div>
   <div id="cur-ring"></div>
-  <script>
-const dot = document.getElementById("cur-dot");
-const ring = document.getElementById("cur-ring");
-
-document.addEventListener("mousemove", (e) => {
-  dot.style.top = e.clientY + "px";
-  dot.style.left = e.clientX + "px";
-
-  ring.style.top = e.clientY + "px";
-  ring.style.left = e.clientX + "px";
-});
-</script>
 
   <!-- ── SCROLL PROGRESS ────────────────────── -->
   <div id="scroll-prog"></div>
@@ -45,60 +36,50 @@ document.addEventListener("mousemove", (e) => {
       <span class="logo-b">β</span>ETA
     </a>
     <ul class="nav-list">
-      <li><a href="#home" class="nav-link">Home</a></li>
-      <li><a href="#story" class="nav-link">Our Story</a></li>
+      <li><a href="#home"     class="nav-link">Home</a></li>
+      <li><a href="#story"    class="nav-link">Our Story</a></li>
       <li><a href="#services" class="nav-link">Services</a></li>
-      <li><a href="#work" class="nav-link">Work</a></li>
-      <li><a href="#team" class="nav-link">Team</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="#work"     class="nav-link">Work</a></li>
+      <li><a href="#team"     class="nav-link">Team</a></li>
+      <li><a href="#contact"  class="nav-link">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-cta" data-magnetic>Let's talk →</a>
-    <button class="hamburger" id="hamburger">
-      <span></span><span></span>
-    </button>
+    <button class="hamburger" id="hamburger"><span></span><span></span></button>
   </nav>
 
   <!-- Mobile nav -->
   <div id="mobile-nav">
     <div class="mnav-inner">
-      <a href="#home" class="mnav-link" onclick="closeMNav()">Home</a>
-      <a href="#story" class="mnav-link" onclick="closeMNav()">Our Story</a>
+      <a href="#home"     class="mnav-link" onclick="closeMNav()">Home</a>
+      <a href="#story"    class="mnav-link" onclick="closeMNav()">Our Story</a>
       <a href="#services" class="mnav-link" onclick="closeMNav()">Services</a>
-      <a href="#work" class="mnav-link" onclick="closeMNav()">Work</a>
-      <a href="#team" class="mnav-link" onclick="closeMNav()">Team</a>
-      <a href="#contact" class="mnav-link" onclick="closeMNav()">Contact</a>
+      <a href="#work"     class="mnav-link" onclick="closeMNav()">Work</a>
+      <a href="#team"     class="mnav-link" onclick="closeMNav()">Team</a>
+      <a href="#contact"  class="mnav-link" onclick="closeMNav()">Contact</a>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════
-       § HERO
-  ═══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════ HERO -->
   <section id="home" class="hero">
-    <!-- Three.js canvas fills this -->
     <canvas id="hero-canvas"></canvas>
-
-    <!-- Floating color blobs (CSS animated) -->
     <div class="blob blob-coral"></div>
     <div class="blob blob-purple"></div>
     <div class="blob blob-teal"></div>
     <div class="blob blob-yellow"></div>
 
+    <!-- Animated grid lines -->
+    <div class="hero-grid"></div>
+
     <div class="hero-content">
       <div class="hero-badge" id="h-badge">
         <span class="badge-dot"></span>
-        
+        Available for new projects
       </div>
 
       <h1 class="hero-title">
-        <span class="ht-line">
-          <span class="ht-word" id="ht1">We build</span>
-        </span>
-        <span class="ht-line">
-          <span class="ht-word gradient-text" id="ht2">extraordinary</span>
-        </span>
-        <span class="ht-line">
-          <span class="ht-word" id="ht3">things together.</span>
-        </span>
+        <span class="ht-line"><span class="ht-word" id="ht1">We build</span></span>
+        <span class="ht-line"><span class="ht-word gradient-text" id="ht2">extraordinary</span></span>
+        <span class="ht-line"><span class="ht-word" id="ht3">things together.</span></span>
       </h1>
 
       <p class="hero-sub" id="h-sub">
@@ -107,7 +88,7 @@ document.addEventListener("mousemove", (e) => {
       </p>
 
       <div class="hero-ctas" id="h-ctas">
-        <a href="#work" class="btn-pill" data-magnetic>See our work</a>
+        <a href="#work"  class="btn-pill"    data-magnetic>See our work</a>
         <a href="#story" class="btn-outline" data-magnetic>Our story →</a>
       </div>
     </div>
@@ -117,26 +98,20 @@ document.addEventListener("mousemove", (e) => {
       <span>scroll</span>
     </div>
 
-    <!-- Floating tags around the 3D object -->
     <div class="float-tag ft1" id="ft1">✦ Design</div>
     <div class="float-tag ft2" id="ft2">⬡ 3D / XR</div>
     <div class="float-tag ft3" id="ft3">◎ Strategy</div>
     <div class="float-tag ft4" id="ft4">▲ Engineering</div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       § MARQUEE
-  ═══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════ MARQUEE -->
   <div class="marquee-section">
     <div class="marquee-track" id="mq-track"></div>
   </div>
 
-  <!-- ═══════════════════════════════════════
-       § STORY
-  ═══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════ STORY -->
   <section id="story" class="story-section">
     <div class="container">
-
       <div class="story-top">
         <div class="section-label reveal">our story</div>
         <h2 class="story-title">
@@ -165,7 +140,6 @@ document.addEventListener("mousemove", (e) => {
           </div>
         </div>
 
-        <!-- Animated 3D scene -->
         <div class="story-visual reveal">
           <canvas id="story-canvas"></canvas>
           <div class="sv-badge">
@@ -175,7 +149,6 @@ document.addEventListener("mousemove", (e) => {
         </div>
       </div>
 
-      <!-- Stats row -->
       <div class="stats-row">
         <div class="stat-item reveal">
           <div class="stat-n"><span class="counter" data-target="40">0</span>+</div>
@@ -197,19 +170,14 @@ document.addEventListener("mousemove", (e) => {
           <div class="stat-l">Years running</div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       § SERVICES
-  ═══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════ SERVICES -->
   <section id="services" class="services-section">
     <div class="container">
       <div class="section-label reveal">what we do</div>
-      <h2 class="section-title reveal">
-        Full-spectrum<br/><em>digital craft</em>
-      </h2>
+      <h2 class="section-title reveal">Full-spectrum<br/><em>digital craft</em></h2>
 
       <div class="services-list">
 
@@ -217,7 +185,6 @@ document.addEventListener("mousemove", (e) => {
           <div class="svc-num">01</div>
           <div class="svc-body">
             <div class="svc-icon">
-              <!-- SVG icon: design -->
               <svg viewBox="0 0 56 56" fill="none">
                 <circle cx="28" cy="28" r="26" stroke="var(--coral)" stroke-width="1.5"/>
                 <path d="M18 28h20M28 18v20" stroke="var(--coral)" stroke-width="2" stroke-linecap="round"/>
@@ -327,9 +294,7 @@ document.addEventListener("mousemove", (e) => {
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       § WORK
-  ═══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════ WORK -->
   <section id="work" class="work-section">
     <div class="container">
       <div class="work-header">
@@ -348,11 +313,7 @@ document.addEventListener("mousemove", (e) => {
             <canvas class="wc-canvas" data-color1="#FF6B47" data-color2="#7C6FCD"></canvas>
           </div>
           <div class="wc-info">
-            <div class="wc-tags">
-              <span>AI Dashboard</span>
-              <span>SaaS</span>
-              <span>2024</span>
-            </div>
+            <div class="wc-tags"><span>AI Dashboard</span><span>SaaS</span><span>2024</span></div>
             <div class="wc-name">Nova Platform</div>
             <div class="wc-arrow-wrap"><span class="wc-arrow">↗</span></div>
           </div>
@@ -364,10 +325,7 @@ document.addEventListener("mousemove", (e) => {
             <canvas class="wc-canvas" data-color1="#7C6FCD" data-color2="#4ECDC4"></canvas>
           </div>
           <div class="wc-info">
-            <div class="wc-tags">
-              <span>Brand</span>
-              <span>Motion</span>
-            </div>
+            <div class="wc-tags"><span>Brand</span><span>Motion</span></div>
             <div class="wc-name">Arc Identity</div>
             <div class="wc-arrow-wrap"><span class="wc-arrow">↗</span></div>
           </div>
@@ -379,10 +337,7 @@ document.addEventListener("mousemove", (e) => {
             <canvas class="wc-canvas" data-color1="#4ECDC4" data-color2="#FFD93D"></canvas>
           </div>
           <div class="wc-info">
-            <div class="wc-tags">
-              <span>WebXR</span>
-              <span>3D</span>
-            </div>
+            <div class="wc-tags"><span>WebXR</span><span>3D</span></div>
             <div class="wc-name">Flux Spatial</div>
             <div class="wc-arrow-wrap"><span class="wc-arrow">↗</span></div>
           </div>
@@ -394,10 +349,7 @@ document.addEventListener("mousemove", (e) => {
             <canvas class="wc-canvas" data-color1="#FFD93D" data-color2="#FF6B47"></canvas>
           </div>
           <div class="wc-info">
-            <div class="wc-tags">
-              <span>E-Commerce</span>
-              <span>Product</span>
-            </div>
+            <div class="wc-tags"><span>E-Commerce</span><span>Product</span></div>
             <div class="wc-name">Orbit Commerce</div>
             <div class="wc-arrow-wrap"><span class="wc-arrow">↗</span></div>
           </div>
@@ -407,19 +359,16 @@ document.addEventListener("mousemove", (e) => {
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       § TEAM
-  ═══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════ TEAM -->
   <section id="team" class="team-section">
     <div class="container">
       <div class="section-label reveal">the founders</div>
-      <h2 class="section-title reveal">
-        Meet the <em>friends</em><br/>behind BETA
-      </h2>
+      <h2 class="section-title reveal">Meet the <em>friends</em><br/>behind BETA</h2>
 
       <div class="team-grid">
 
-        <div class="team-card reveal">
+        <div class="team-card reveal" data-tilt>
+          <div class="tc-glow"></div>
           <div class="tc-avatar tca-1">
             <canvas class="tc-canvas" data-hue="15"></canvas>
             <div class="tc-initials">AP</div>
@@ -430,12 +379,13 @@ document.addEventListener("mousemove", (e) => {
             <p class="tc-bio">Former Google. Loves espresso and painfully honest feedback. Believes great products start with great relationships.</p>
           </div>
           <div class="tc-links">
-            <a href="#" class="tc-link">Twitter</a>
-            <a href="#" class="tc-link">LinkedIn</a>
+            <a href="#" class="tc-link" data-magnetic>Twitter</a>
+            <a href="#" class="tc-link" data-magnetic>LinkedIn</a>
           </div>
         </div>
 
-        <div class="team-card reveal tc-featured">
+        <div class="team-card tc-featured reveal" data-tilt>
+          <div class="tc-glow"></div>
           <div class="tc-avatar tca-2">
             <canvas class="tc-canvas" data-hue="260"></canvas>
             <div class="tc-initials">PR</div>
@@ -446,12 +396,13 @@ document.addEventListener("mousemove", (e) => {
             <p class="tc-bio">Ex-Figma designer. Makes complex things feel simple. Hates lorem ipsum with a burning passion.</p>
           </div>
           <div class="tc-links">
-            <a href="#" class="tc-link">Twitter</a>
-            <a href="#" class="tc-link">Dribbble</a>
+            <a href="#" class="tc-link" data-magnetic>Twitter</a>
+            <a href="#" class="tc-link" data-magnetic>Dribbble</a>
           </div>
         </div>
 
-        <div class="team-card reveal">
+        <div class="team-card reveal" data-tilt>
+          <div class="tc-glow"></div>
           <div class="tc-avatar tca-3">
             <canvas class="tc-canvas" data-hue="170"></canvas>
             <div class="tc-initials">MC</div>
@@ -462,8 +413,8 @@ document.addEventListener("mousemove", (e) => {
             <p class="tc-bio">MIT dropout. Wrote his first shader at 14. Obsessed with 60fps and edges that glow in just the right way.</p>
           </div>
           <div class="tc-links">
-            <a href="#" class="tc-link">GitHub</a>
-            <a href="#" class="tc-link">LinkedIn</a>
+            <a href="#" class="tc-link" data-magnetic>GitHub</a>
+            <a href="#" class="tc-link" data-magnetic>LinkedIn</a>
           </div>
         </div>
 
@@ -471,9 +422,7 @@ document.addEventListener("mousemove", (e) => {
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       § CONTACT
-  ═══════════════════════════════════════ -->
+  <!-- ═══════════════════════════════════════ CONTACT -->
   <section id="contact" class="contact-section">
     <div class="container">
       <div class="contact-inner">
@@ -489,17 +438,14 @@ document.addEventListener("mousemove", (e) => {
             Drop us a message or just say hi. We respond to everything.
           </p>
           <div class="contact-links reveal">
-            <a href="mailto:hello@betastudio.io" class="cl-item">
-              <span class="cl-icon">✉</span>
-              <span>betaforworld@gmail.com</span>
+            <a href="mailto:betaforworld@gmail.com" class="cl-item">
+              <span class="cl-icon">✉</span><span>betaforworld@gmail.com</span>
             </a>
-            <a href="tel:+14150000000" class="cl-item">
-              <span class="cl-icon">📞</span>
-              <span>+91 6369990709</span>
+            <a href="tel:+916369990709" class="cl-item">
+              <span class="cl-icon">📞</span><span>+91 6369990709</span>
             </a>
             <div class="cl-item">
-              <span class="cl-icon">📍</span>
-              <span>Chennai· Tamilnadu</span>
+              <span class="cl-icon">📍</span><span>Chennai · Tamil Nadu</span>
             </div>
           </div>
         </div>
@@ -537,9 +483,7 @@ document.addEventListener("mousemove", (e) => {
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">β<span>ETA</span></div>
-      <div class="footer-mid">
-        <p>Built with ♥ by friends · San Francisco · 2019–2025</p>
-      </div>
+      <div class="footer-mid"><p>Built with ♥ by friends · Chennai · 2019–2025</p></div>
       <ul class="footer-socials">
         <li><a href="#">Twitter</a></li>
         <li><a href="#">Instagram</a></li>
