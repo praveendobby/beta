@@ -548,11 +548,27 @@ section { padding: 8rem 0; }
   opacity: 0;
   transition: opacity 0.4s ease;
 
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
+  .team-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+
+  background: linear-gradient(120deg, var(--coral), var(--purple), var(--teal));
+
+  /* KEY FIX */
+  background-clip: content-box, border-box;
+  -webkit-background-clip: content-box, border-box;
+
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.team-card:hover::before {
+  opacity: 1;
+}
 }
 
 /* Hover: lift + slight tilt */
